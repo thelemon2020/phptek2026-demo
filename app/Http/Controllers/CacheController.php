@@ -6,27 +6,28 @@ use Illuminate\Http\JsonResponse;
 
 class CacheController extends Controller
 {
-    /** @var array<int, array{id: int, name: string, price: string}> */
-    private static array $products = [
-        1 => ['id' => 1, 'name' => 'Pro Headlamp 3000', 'price' => '$49.99'],
-        2 => ['id' => 2, 'name' => 'Trail Boots X', 'price' => '$129.99'],
-        3 => ['id' => 3, 'name' => 'Hydration Pack 2L', 'price' => '$39.99'],
-        4 => ['id' => 4, 'name' => 'Trekking Poles Pro', 'price' => '$79.99'],
-        5 => ['id' => 5, 'name' => 'Sleeping Bag -10C', 'price' => '$199.99'],
+    /** @var array<int, array{id: int, title: string, artist: string, price: string}> */
+    private static array $albums = [
+        1 => ['id' => 1, 'title' => 'The Dark Side of the Moon', 'artist' => 'Pink Floyd', 'price' => '$34.99'],
+        2 => ['id' => 2, 'title' => 'Kind of Blue', 'artist' => 'Miles Davis', 'price' => '$29.99'],
+        3 => ['id' => 3, 'title' => 'Rumours', 'artist' => 'Fleetwood Mac', 'price' => '$31.99'],
+        4 => ['id' => 4, 'title' => 'Purple Rain', 'artist' => 'Prince', 'price' => '$27.99'],
+        5 => ['id' => 5, 'title' => 'Thriller', 'artist' => 'Michael Jackson', 'price' => '$29.99'],
     ];
 
     public function product(int $id): JsonResponse
     {
-        $product = self::$products[$id] ?? null;
+        $album = self::$albums[$id] ?? null;
 
-        if (! $product) {
-            return response()->json(['error' => 'Product not found'], 404);
+        if (! $album) {
+            return response()->json(['error' => 'Album not found'], 404);
         }
 
         return response()->json([
-            'id' => $product['id'],
-            'name' => $product['name'],
-            'price' => $product['price'],
+            'id' => $album['id'],
+            'title' => $album['title'],
+            'artist' => $album['artist'],
+            'price' => $album['price'],
             'generated_at' => now()->toDateTimeString(),
         ]);
     }

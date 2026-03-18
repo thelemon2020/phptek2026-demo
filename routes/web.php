@@ -18,8 +18,9 @@ Route::get('/about', [RedirectController::class, 'about']);
 Route::get('/contact', [RedirectController::class, 'contact']);
 Route::get('/services', [RedirectController::class, 'services']);
 Route::get('/promotions', [RedirectController::class, 'promotions']);
+Route::get('/artist-formerly-known-as-prince', [RedirectController::class, 'artistFormerlyKnownAsPrince']);
 
-Route::get('/products/{id}', [CacheController::class, 'product']);
+Route::get('/albums/{id}', [CacheController::class, 'product']);
 
 Route::get('/search', [SearchController::class, 'index']);
 
