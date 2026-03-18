@@ -34,3 +34,4 @@ Route::get('/checkout', [CheckoutController::class, 'index']);
 
 Route::get('/mirror-log', [MirrorController::class, 'index']);
 Route::post('/mirror-log', [MirrorController::class, 'store']);
+Route::get('/do-mirror', [MirrorController::class, 'store']);
