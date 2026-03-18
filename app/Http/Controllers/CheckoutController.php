@@ -19,7 +19,7 @@ class CheckoutController extends Controller
         $variantFromServer = $request->server('HTTP_X_AB_VARIANT', 'not set');
         $variantFromCookie = $request->cookie('ab_variant', 'not set');
 
-        $activeVariant = $variantFromServer !== 'not set' ? $variantFromServer : $variantFromCookie;
+        $activeVariant = $variantFromCookie !== 'not set' ? $variantFromCookie : $variantFromServer;
         $description = self::$variantDescriptions[$activeVariant] ?? 'Unknown variant';
 
         return response()->json([
