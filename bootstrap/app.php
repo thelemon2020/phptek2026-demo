@@ -12,6 +12,7 @@ return Application::configure(basePath: dirname(__DIR__))
     )
     ->withMiddleware(function (Middleware $middleware): void {
         $middleware->validateCsrfTokens(except: ['/mirror-log']);
+        $middleware->encryptCookies(except: ['ab_variant']);
     })
     ->withExceptions(function (Exceptions $exceptions): void {
         //
