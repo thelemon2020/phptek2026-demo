@@ -24,7 +24,7 @@ Route::get('/albums/{id}', [CacheController::class, 'product']);
 
 Route::get('/search', [SearchController::class, 'index']);
 
-Route::get('/private', [PrivateController::class, 'index']);
+Route::get('/members', [PrivateController::class, 'index']);
 Route::get('/auth', [AuthCheckController::class, 'check']);
 
 Route::get('/admin', [AdminController::class, 'index']);
