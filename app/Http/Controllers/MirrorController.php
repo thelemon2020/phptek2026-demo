@@ -16,14 +16,13 @@ class MirrorController extends Controller
             ->limit(20)
             ->get()
             ->map(fn (MirrorLog $log) => [
-                'method' => $log->method,
+                'method' => 'GET',
                 'uri' => $log->uri,
                 'ip' => $log->ip,
                 'at' => $log->created_at?->toDateTimeString(),
             ]);
 
         return response()->json([
-            'nginx_demo' => 'request mirroring — every request duplicated to /mirror-log',
             'mirrored_requests' => $logs,
         ]);
     }
