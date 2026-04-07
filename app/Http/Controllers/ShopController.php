@@ -14,6 +14,7 @@ class ShopController extends Controller
     /** @var array<string, array{currency: string, rate: float}> */
     private const COUNTRY_CURRENCY = [
         'US' => ['currency' => 'USD', 'rate' => 0.74],
+        'CAD' => ['currency' => 'CAD', 'rate' => 1.00],
         'GB' => ['currency' => 'GBP', 'rate' => 0.58],
         'EU' => ['currency' => 'EUR', 'rate' => 0.68],
         'FR' => ['currency' => 'EUR', 'rate' => 0.68],
@@ -27,14 +28,12 @@ class ShopController extends Controller
         $countryCode = $request->header('X-Country-Code');
         $countryName = $request->header('X-Country-Name');
         $city = $request->header('X-City');
-
         $localCurrency = self::COUNTRY_CURRENCY[$countryCode] ?? null;
         $localPrice = $localCurrency
             ? round(self::BASE_PRICE * $localCurrency['rate'], 2)
             : null;
 
         $response = [
-            'nginx_demo' => 'GeoIP2 headers injected by nginx',
             'country_code' => $countryCode,
             'country_name' => $countryName,
             'city' => $city,
