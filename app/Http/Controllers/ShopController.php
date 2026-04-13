@@ -14,7 +14,7 @@ class ShopController extends Controller
     /** @var array<string, array{currency: string, rate: float}> */
     private const COUNTRY_CURRENCY = [
         'US' => ['currency' => 'USD', 'rate' => 0.74],
-        'CAD' => ['currency' => 'CAD', 'rate' => 1.00],
+        'CA' => ['currency' => 'CAD', 'rate' => 1.00],
         'GB' => ['currency' => 'GBP', 'rate' => 0.58],
         'EU' => ['currency' => 'EUR', 'rate' => 0.68],
         'FR' => ['currency' => 'EUR', 'rate' => 0.68],
